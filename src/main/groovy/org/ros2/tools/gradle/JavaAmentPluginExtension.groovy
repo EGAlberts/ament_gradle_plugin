@@ -80,7 +80,7 @@ class JavaAmentPluginExtension extends BaseAmentPluginExtension {
         // variable instead
         def classpathFix(script) {
           def lines = script.readLines().collect {
-            if (it ==~ /^(set )?CLASSPATH=/) {
+            if (it ==~ /^(set )?CLASSPATH=.*$/) {
               return ''
             } else {
               return it

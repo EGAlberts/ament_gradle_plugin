@@ -19,7 +19,7 @@ repositories {
 }
 
 group = 'org.ros2.tools.gradle'
-version = '0.7.0'
+version = '0.8.0'
 
 publishing {
   publications {
