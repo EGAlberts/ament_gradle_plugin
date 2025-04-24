@@ -45,7 +45,7 @@ class JavaAmentPluginExtension extends BaseAmentPluginExtension {
 
   def updateJavaOutput() {
     project.jar {
-      destinationDir = project.file(
+      destinationDirectory = project.file(
         [this.installSpace, 'share',
           this.packageManifestName,
           'java'].join(File.separator)

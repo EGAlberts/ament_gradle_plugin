@@ -1,35 +1,21 @@
-apply plugin: 'com.gradle.plugin-publish'
 apply plugin: 'groovy'
 apply plugin: 'maven-publish'
-
-buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
-  }
-  dependencies {
-    classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
-  }
-}
 
 repositories {
   jcenter()
   mavenCentral()
 }
 
-group = 'org.ros2.tools.gradle'
-version = '0.8.0'
-
 publishing {
   publications {
     myLibrary(MavenPublication) {
-      groupId = 'gradle.plugin.org.ros2.tools.gradle'
+      groupId = 'org.ros2.tools.gradle'
+      version = '0.8.6'
       from components.java
     }
   }
   repositories {
-    mavenLocal()
+    mavenLocal()  // You can publish locally to your Maven repository if needed, or just use it as-is
   }
 }
 
@@ -38,19 +24,5 @@ dependencies {
   implementation localGroovy()
   if (project.hasProperty("android")) {
     implementation "com.android.tools.build:gradle:7.4"
-  }
-}
-
-pluginBundle {
-  website = 'https://github.com/esteve/ament_gradle_plugin'
-  vcsUrl = 'https://github.com/esteve/ament_gradle_plugin'
-  description = 'A Gradle plugin for building Java and Android-based ROS2 projects'
-  tags = ['ament', 'rcljava', 'robotics', 'ros2']
-
-  plugins {
-    ament {
-      id = 'org.ros2.tools.gradle'
-      displayName = 'A Gradle plugin for building Java and Android-based ROS2 projects'
-    }
   }
 }
